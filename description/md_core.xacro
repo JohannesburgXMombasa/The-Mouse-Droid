@@ -229,15 +229,15 @@
         </visual>
         <collision>
             <geometry>
-                <sphere radius="${rear_wheel_radius}"/>
+                <cylinder radius="${rear_wheel_radius}"/>
             </geometry>
         </collision>
-        <xacro:inertial_cylinder mass="${wheel_mass}" length="${rear_wheel_thickness}" radius="${rear_wheel_radius}">
+        <xacro:inertial_cylinder mass="${wheel_mass}" length="0.2202" radius="0.005">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
 
-    <gazebo reference="rear_left_wheel">
+    <gazebo reference="rear_axel">
         <material>Gazebo/Red</material>
     </gazebo>
 
