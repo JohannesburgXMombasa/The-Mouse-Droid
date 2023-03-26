@@ -11,5 +11,5 @@ def generate_launch_description():
             package='md_beta',
             executable='wheel_steer.py',
             output='screen',
-            arguments=["0.5"]),
+            arguments=["0.0"]),
     ])

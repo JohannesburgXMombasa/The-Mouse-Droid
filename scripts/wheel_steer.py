@@ -27,11 +27,11 @@ class SteeringActionClient(Node):
 
         points = []
         point1 = JointTrajectoryPoint()
-        point1.positions = [0.0, 0.0]
+        point1.positions = [-0.5, 0.5]
 
         point2 = JointTrajectoryPoint()
         point2.time_from_start = Duration(seconds=1, nanoseconds=0).to_msg()
-        point2.positions = [angle, angle]
+        point2.positions = [-angle, angle]
 
         points.append(point1)
         points.append(point2)
