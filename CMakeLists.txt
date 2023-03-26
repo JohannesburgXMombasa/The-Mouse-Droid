@@ -33,8 +33,11 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config description launch worlds
+  DIRECTORY config description launch scripts worlds
   DESTINATION share/${PROJECT_NAME}/
 )
-
+install(PROGRAMS
+  scripts/wheel_steer.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 ament_package()
