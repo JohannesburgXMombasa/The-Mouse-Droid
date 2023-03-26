@@ -19,3 +19,10 @@ joint_trajectory_controller:
     state_interfaces:
       - position
       - velocity
+    gains:
+      front_left_axel_joint.p: 0.0
+      front_left_axel_joint.i: 0.0
+      front_left_axel_joint.d: 0.0
+      front_right_axel_joint.p: 0.0
+      front_right_axel_joint.i: 0.0
+      front_right_axel_joint.d: 0.0 

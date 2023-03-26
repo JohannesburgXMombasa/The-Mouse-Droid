@@ -43,6 +43,7 @@
 
     </link>
 
+
     <!-- BASE_FOOTPRINT LINK -->
 
     <joint name="base_footprint_joint" type="fixed">
@@ -84,6 +85,7 @@
 
     <gazebo reference="chassis">
         <material>Gazebo/Orange</material>
+        <dynamics damping="0.7"/>
     </gazebo>
 
     
@@ -146,6 +148,8 @@
 
     <gazebo reference="front_left_wheel">
         <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
     </gazebo>
 
 
@@ -208,6 +212,8 @@
 
     <gazebo reference="front_right_wheel">
         <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
     </gazebo>
 
 

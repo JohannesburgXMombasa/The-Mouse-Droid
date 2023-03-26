@@ -3,8 +3,8 @@
 
    <!-- Properties -->
 	   <xacro:property name="PI" value="3.1415926535897931"/>
-	   <xacro:property name="steer_limlow" value="-0.7854"/>
-	   <xacro:property name="steer_limhigh" value="0.7854"/>
+	   <xacro:property name="steer_limlow" value="${-pi/4}"/>
+	   <xacro:property name="steer_limhigh" value="${pi/4}"/>
    
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
