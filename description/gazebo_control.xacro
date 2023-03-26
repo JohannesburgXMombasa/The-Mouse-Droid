@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro">
 
+   <!-- Properties -->
+	   <xacro:property name="PI" value="3.1415926535897931"/>
+	   <xacro:property name="steer_limlow" value="-0.7854"/>
+	   <xacro:property name="steer_limhigh" value="0.7854"/>
+   
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
-            <plugin>gazebo_ros2_control/GazeboSystem/<plugin>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
         </hardware>
-        <joint_name="front_right_axel_joint">
+        <joint name="front_right_axel_joint">
             <command_interface name="position">
                 <param name="min">${steer_limlow}</param>
                 <param name="max">${steer_limhigh}</param>
@@ -13,7 +18,7 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
         </joint>
-        <joint_name="front_left_axel_joint">
+        <joint name="front_left_axel_joint">
             <command_interface name="position">
                 <param name="min">${steer_limlow}</param>
                 <param name="max">${steer_limhigh}</param>
@@ -24,7 +29,7 @@
     </ros2_control>
 
     <gazebo>
-        <plugin filename="libgazebo_ros2_control.so" name"gazebo_ros2_control">
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
             <parameters>$(find md_beta)/config/controller_configuration.yaml</parameters>
         </plugin>
     </gazebo>
