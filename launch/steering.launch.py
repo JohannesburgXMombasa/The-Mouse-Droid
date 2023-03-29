@@ -8,8 +8,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         launch_ros.actions.Node(
-            package='md_beta',
+            package='rmd_beta',
             executable='wheel_steer.py',
             output='screen',
-            arguments=["0.0"]),
+            arguments=["0.5"]),
     ])

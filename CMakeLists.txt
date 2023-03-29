@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(md_beta)
+project(rmd_beta)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -33,11 +33,14 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config description launch scripts worlds
-  DESTINATION share/${PROJECT_NAME}/
+  DIRECTORY config description launch worlds
+  DESTINATION share/${PROJECT_NAME}
 )
+
 install(PROGRAMS
   scripts/wheel_steer.py
   DESTINATION lib/${PROJECT_NAME}
 )
+
+
 ament_package()

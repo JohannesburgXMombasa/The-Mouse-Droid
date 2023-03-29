@@ -9,9 +9,8 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.event_handlers import OnProcessExit
 from launch.actions import RegisterEventHandler
-
-
 from launch_ros.actions import Node
+from launch.actions import ExecuteProcess
  
  
  
@@ -21,7 +20,7 @@ def generate_launch_description():
     # Include the robot_state_publisher launch file, provided by our own package. Force sim time to be enabled
     # !!! MAKE SURE YOU SET THE PACKAGE NAME CORRECTLY !!!
  
-    package_name='md_beta' #<--- CHANGE ME
+    package_name='rmd_beta' #<--- CHANGE ME
  
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -44,10 +43,16 @@ def generate_launch_description():
                                    '-entity', 'my_bot'],
                         output='screen')
  
+    
     joint_state_broadcaster_spawner = Node(package="controller_manager",
                                           executable="spawner",
                                           arguments=["joint_state_broadcaster",
                                           "--controller-manager", "/controller_manager"],
+                                          )
+    
+    diff_drive_controller_spawner = Node(package="controller_manager",
+                                          executable="spawner",
+                                          arguments=["diff_drive_controller", "-c", "/controller_manager"],
                                           )
     
     robot_controller_spawner = Node(package="controller_manager",
@@ -68,5 +73,6 @@ def generate_launch_description():
         gazebo,
         spawn_entity,
         joint_state_broadcaster_spawner,
+        diff_drive_controller_spawner,
         delayed_robot_controller_spawner,
     ])

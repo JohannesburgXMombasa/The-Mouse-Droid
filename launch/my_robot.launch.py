@@ -17,7 +17,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    pkg_mousedroid_gazebo = get_package_share_directory('md_beta')
+    pkg_mousedroid_gazebo = get_package_share_directory('rmd_beta')
 
     # Start World
     start_world = IncludeLaunchDescription(

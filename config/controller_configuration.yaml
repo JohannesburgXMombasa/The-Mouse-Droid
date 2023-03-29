@@ -5,6 +5,9 @@ controller_manager:
     joint_trajectory_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    diff_drive_controller: 
+      type: diff_drive_controller/DiffDriveController
+
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -26,3 +29,13 @@ joint_trajectory_controller:
       front_right_axel_joint.p: 0.0
       front_right_axel_joint.i: 0.0
       front_right_axel_joint.d: 0.0 
+
+diff_drive_controller:
+  ros__parameters: 
+    publish_rate: 50.0
+    base_frame_id: base_link
+    left_wheel_names: ['rear_left_wheel_joint']
+    right_wheel_names: ['rear_right_wheel_joint']
+    wheel_separation: 0.00
+    wheel_radius: .04
+    use_stamped_vel: false
