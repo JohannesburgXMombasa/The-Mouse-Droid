@@ -28,6 +28,12 @@ def generate_launch_description():
                 )]), launch_arguments={'use_sim_time': 'true', 'use_ros2_control': 'true'}.items()
     )
     
+    cmd_vel = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('cmd_vel_to_traj'),'launch','cmd_vel.launch.py'
+                )]), launch_arguments={}.items()
+    )
+    
     
     # Include the Gazebo launch file, provided by the gazebo_ros package
     gazebo_params_file = os.path.join(get_package_share_directory(package_name),'config','gazebo_params.yaml')
@@ -53,6 +59,9 @@ def generate_launch_description():
     diff_drive_controller_spawner = Node(package="controller_manager",
                                           executable="spawner",
                                           arguments=["diff_drive_controller", "-c", "/controller_manager"],
+                                        #   remappings=[
+                                        #     ("/diff_drive_controller/odom", "/odom")
+                                        #   ],
                                           )
     
     robot_controller_spawner = Node(package="controller_manager",
@@ -75,4 +84,5 @@ def generate_launch_description():
         joint_state_broadcaster_spawner,
         diff_drive_controller_spawner,
         delayed_robot_controller_spawner,
+        cmd_vel,
     ])
